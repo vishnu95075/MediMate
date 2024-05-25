@@ -28,7 +28,7 @@ In the Powershell CMD run bellow command for Policies Error
 ```
 Set-ExecutionPolicy Unrestricted
 ```
-
+Install Vertual ENV
 ```
 pip install virtualenv
 
