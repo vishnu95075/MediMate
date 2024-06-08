@@ -203,17 +203,23 @@
         <table name="doctors" class="doctors" id="doctors">
           <tr>
             <th>Name</th>
+            <th>Address</th>
+            <th>Degree</th>
             <th>Years of Exprience</th>
             <th>Service of Disease</th>
             <th>Ratings</th>
+            <th>Free</th>
             <th>Action</th>
           </tr>
           {% for doctor in doctors %}
           <tr></tr>
           <td>{{doctor[0]}}</td>
+          <td>{{doctor[4]}}</td>
+          <td>{{doctor[5]}}</td>
           <td>{{doctor[1]}} Years</td>
           <td>{{doctor[2]}}</td>
           <td>{{doctor[3]}} ⭐</td>
+          <td>{{doctor[6]}} &#8377; </td>
           <td class="btn has-before">
           <a  class="span title-md" href="#">Take Appointment</a>
           </td>
