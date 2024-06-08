@@ -197,6 +197,146 @@
 
         </div>
       </section>
+      <!-- Results -->
+      {% if predicted_disease %}
+      <section class="result">
+        <div class="container">
+          <h1 class="headline-lg hero-title text-center my-4">Our AI System Results</h1>
+          <div class="result-container">
+            <button class="btn has-before toggle-button disease-btn" data-bs-toggle="modal"
+              data-bs-target="#diseaseModal">Disease</button>
+            <button class="btn has-before toggle-button description-btn" data-bs-toggle="modal"
+              data-bs-target="#descriptionModal">Description</button>
+            <button class="btn has-before toggle-button precaution-btn" data-bs-toggle="modal"
+              data-bs-target="#precautionModal">Precaution</button>
+            <button class="btn has-before toggle-button medications-btn" data-bs-toggle="modal"
+              data-bs-target="#medicationsModal">Medications</button>
+            <button class="btn has-before toggle-button workouts-btn" data-bs-toggle="modal"
+              data-bs-target="#workoutsModal">Workouts</button>
+            <button class="btn has-before toggle-button diets-btn" data-bs-toggle="modal" data-bs-target="#dietsModal">
+              Diets</button>
+          </div>
+        </div>
+
+
+        <!-- Disease Modal -->
+        <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #020606; color:white;">
+                <!-- Set header background color inline -->
+                <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" style="background-color: #modal-body-color;">
+                <!-- Set modal body background color inline -->
+                <p>{{ predicted_disease }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Description Modal -->
+        <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #020606; color:white;">
+                <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>{{ dis_des }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Precaution Modal -->
+        <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #020606; color:white;">
+                <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  {% for i in my_precautions %}
+                  <li>{{ i }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- Medications Modal -->
+        <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #020606; color:white;">
+                <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  {% for i in medications %}
+                  <li>{{ i }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workouts Modal -->
+        <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #020606; color:white;">
+                <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  {% for i in workout %}
+                  <li>{{ i }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diets Modal -->
+        <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #020606; color:white;">
+                <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  {% for i in my_diet %}
+                  <li>{{ i }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
       <!-- Show Recomendated Doctors List -->
       <section>
         {% if doctors %}
@@ -221,7 +361,7 @@
           <td>{{doctor[3]}} ⭐</td>
           <td>{{doctor[6]}} &#8377; </td>
           <td class="btn has-before">
-          <a  class="span title-md" href="#">Take Appointment</a>
+            <a class="span title-md" href="#">Take Appointment</a>
           </td>
           </tr>
           {% endfor %}
@@ -239,7 +379,8 @@
             <input required type="text" name="name" id="name" placeholder="Enter The Name" class="box">
             <input required type="text" name="disease" id="disease" placeholder="Enter The Service Disease" class="box">
             <input required type="number" name="exprience" id="exprience" class="box" placeholder="Enter The Exprience">
-            <input required type="number" placeholder="Enter The Rating" step="0.1" min="0" max="5" name="rating" id="rating" class="box">
+            <input required type="number" placeholder="Enter The Rating" step="0.1" min="0" max="5" name="rating"
+              id="rating" class="box">
             <button class="btn has-before">
               <span class="span title-md">Submit&nbsp; Now</span>
             </button>
