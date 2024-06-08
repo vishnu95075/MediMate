@@ -41,7 +41,7 @@ virtualenv venv
 Run Vertual Enviroment
 
 ```
-.\env\Scripts\activate.ps1 
+.\venv\Scripts\activate.ps1 
 ```
 
 Install All Pakages
